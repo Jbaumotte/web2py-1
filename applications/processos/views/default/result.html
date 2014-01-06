@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+<!--{{=BEAUTIFY(response._vars)}}-->
+
+
+<table>
+<th>Data</th>
+<th>Numero</th>
+<th>Classe</th>
+<th>Competência</th>
+<th>Reu</th>
+<th>Crime</th>
+{{for row in session.rows:}}
+<tr>
+<td label="Data">
+{{=row.criado_em}}
+</td><td>
+{{=row.numero}}
+</td><td>
+{{=row.classe}}
+</td><td>
+{{=row.competencia}}
+</td><td>
+{{=row.reu}}
+</td><td>
+{{=row.crime}}
+ </td>
+{{pass}}
+</table>

@@ -1,0 +1,75 @@
+{{extend 'layout.html'}}
+ {{block head}}
+<style>
+#recentes {
+    
+    width:100%;
+    border-collapse:collapse;
+}
+#recentes td, #recentes th, #estatistica {
+    font-size:0.8em;
+    border:1px solid #436976;
+    padding:3px 7px 2px 7px;
+}
+#recentes th, #estatistica {
+    font-size:1em;
+    text-align:left;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#436976;
+    color:#fff;
+}
+#recentes tr.alt td, #estatistica {
+    color:#000;
+    background-color:#436976;
+}
+
+
+
+tr:nth-child(odd)		{ background-color:#eee; }
+tr:nth-child(even)		{ background-color:#fff; }
+
+</style>
+			
+{{end}}
+			
+			
+			<!--{{=SQLTABLE(rows, 
+			columns={ 'processo.numero', 'processo.competencia','processo.criado_em', 'processo.classe','processo.reu', 'processo.crime'}, 
+headers ={'processo.criado_em':'Data', 'processo.classe':'Classe', 'processo.numero':'Numero', 'processo.competencia':'Competencia', 'processo.reu':'Reu', 'processo.crime':'Crime'}, 
+			truncate=24)}}-->
+
+<table id = "recentes">
+<th>Data</th>
+<th>Numero</th>
+<th>Classe</th>
+<th>Competência</th>
+<th>Reu</th>
+<th>Crime</th>
+{{for row in rows:}}
+<tr>
+<td label="Data">
+{{=row.criado_em}}
+</td><td>
+{{=row.numero}}
+</td><td>
+{{=row.classe}}
+</td><td>
+{{=row.competencia}}
+</td><td>
+{{=row.reu}}
+</td><td>
+{{=row.crime}}
+ </td>
+{{pass}}
+</table>
+
+<hr>
+<h5> Processos desse mês </h5>
+<table id="estatistica"> 
+    <tbody>
+    <tr><td> Relator </td><td> {{=session.frelatora}} </td></tr>
+    <tr><td> Revisor </td><td>{{=session.frevisora}} </td></tr>
+    <tr><td> Total </td><td>{{=session.ftotal}} </td></tr>
+    </tbody>
+</table>

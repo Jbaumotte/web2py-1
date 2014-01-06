@@ -1,0 +1,13 @@
+##import library to do http requests:
+import urllib
+
+##import beautiful soup parser:
+from bs4 import BeautifulSoup
+
+html = urllib.urlopen('http://tjdf19.tjdft.jus.br/cgi-bin/tjcgi1?NXTPGM=plhtml02&TitCabec=2%AA+Inst%E2ncia+%3E+Consulta+Processual&SELECAO=1&CHAVE=2013.05.1.007137-7&COMMAND=ok&ORIGEM=INTER')
+
+page = html.read()
+
+html.close()
+
+soup = BeautifulSoup(page, "html.parser")
